@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>carlosdev — Webs para negocios pequeños y freelancers en Gran Canaria</title>
+<meta name="description" content="Soy Carlos y hago webs para negocios pequeños y freelancers de Las Palmas y toda Gran Canaria: diseño propio para cada negocio, pensadas para el móvil y con contacto directo.">
+<link rel="canonical" href="https://carlosdev-web.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="carlosdev">
+<meta property="og:url" content="https://carlosdev-web.netlify.app/">
+<meta property="og:title" content="carlosdev — Webs para negocios pequeños y freelancers en Gran Canaria">
+<meta property="og:description" content="Una web que se parezca a tu negocio. Cuatro proyectos: un estudio de tatuajes, una panadería, un salón y un restaurante.">
+<meta property="og:image" content="https://carlosdev-web.netlify.app/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="carlosdev: webs para negocios pequeños y freelancers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EEF0F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230E1013'/><path d='M9 12l-4 4 4 4M23 12l4 4-4 4' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/><rect x='13' y='21' width='6' height='2.4' rx='1.2' fill='%238A99FF'/></svg>">
+<link rel="preload" href="fonts/bricolage-grotesque-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* ───────── Tokens ───────── */
+:root{
+  color-scheme:light dark;
+  --bg:#EEF0F5;
+  --card:rgba(255,255,255,.94);
+  --solid:#FFFFFF;
+  --soft:#E7E9F0;
+  --ink:#0E1013;
+  --muted:#586071;
+  --line:rgba(20,26,48,.09);
+  --accent:#2740F0;
+  --accent-ink:#FFFFFF;
+  --sh:0 1px 0 rgba(255,255,255,.9) inset,0 22px 44px -26px rgba(30,40,90,.34),0 2px 6px rgba(30,40,90,.05);
+  --blob-a:rgba(160,180,255,.45);
+  --blob-b:rgba(255,196,214,.40);
+
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+
+  --gut:clamp(1rem,4vw,3rem);
+  --gap:clamp(.7rem,1.2vw,1rem);
+  --r:clamp(20px,2.4vw,28px);
+  --top:5.6rem;           /* altura reservada para la cabecera */
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0B0D12;
+    --card:rgba(24,28,39,.94);
+    --solid:#151925;
+    --soft:#1D2230;
+    --ink:#F1F3F6;
+    --muted:#A3AAB8;
+    --line:rgba(255,255,255,.10);
+    --accent:#8A99FF;
+    --accent-ink:#0B0D12;
+    --sh:0 1px 0 rgba(255,255,255,.05) inset,0 24px 48px -26px rgba(0,0,0,.85);
+    --blob-a:rgba(70,90,200,.30);
+    --blob-b:rgba(190,70,120,.20);
+  }
+}
+
+/* ───────── Base: sin scroll de página ───────── */
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:400 1.0625rem/1.55 var(--body);-webkit-font-smoothing:antialiased;
+}
+body::before{ /* manchas de color de fondo, muy suaves */
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 12% -8%,var(--blob-a),transparent 70%),
+    radial-gradient(800px 480px at 100% 6%,var(--blob-b),transparent 70%);
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+::placeholder{color:var(--muted);opacity:.85}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:1rem;top:-5rem;z-index:300;background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:999px;font-weight:600}
+.skip:focus{top:1rem}
+.mono{font:500 .78rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.028em;text-wrap:balance}
+h1:focus,h2:focus{outline:none}
+h2{font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.05;font-weight:700}
+h3{font-size:1.25rem;line-height:1.15;font-weight:700}
+
+/* ───────── Botones ───────── */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;cursor:pointer;
+  font:600 .98rem/1 var(--body);padding:.9rem 1.4rem;border-radius:999px;border:1.5px solid var(--ink);
+  transition:transform .18s ease,background .18s,color .18s,border-color .18s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:none}
+.btn--solid{background:var(--ink);color:var(--bg)}
+.btn--solid:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--bg)}
+.btn__arrow{transition:transform .18s}
+.btn:hover .btn__arrow{transform:translate(2px,-2px)}
+
+/* ───────── Cabecera: logo + píldora ───────── */
+.top{
+  position:fixed;inset:0 0 auto 0;z-index:80;pointer-events:none;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;padding:16px var(--gut);
+}
+.top > *{pointer-events:auto}
+.logo{justify-self:start;font:800 1.5rem/1 var(--display);letter-spacing:-.04em;text-decoration:none;white-space:nowrap;transition:color .3s}
+.logo::after{content:"_";color:var(--accent);animation:blink 1.1s steps(2,jump-none) infinite}
+@keyframes blink{50%{opacity:0}}
+html.warping .logo{color:#fff}
+.top__cta{justify-self:end;padding:.8rem 1.35rem;font-size:1rem}
+.pill{
+  position:relative;display:flex;gap:3px;padding:6px;border-radius:999px;
+  background:var(--card);
+  border:1px solid var(--line);box-shadow:var(--sh);
+}
+.pill a{
+  position:relative;z-index:1;padding:.85rem 1.45rem;border-radius:999px;white-space:nowrap;
+  font:600 1.05rem/1 var(--body);text-decoration:none;color:var(--muted);transition:color .2s;
+}
+.pill a:hover,.pill a.is-active{color:var(--ink)}
+.pill .s{display:none}
+.pill__ind{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:999px;background:var(--soft);transition:transform .55s cubic-bezier(.8,0,.15,1),width .55s cubic-bezier(.8,0,.15,1)}
+
+/* ───────── Escenario de pantallas ───────── */
+.stage{position:fixed;inset:0;z-index:2;overflow:hidden;contain:strict}
+html.warping .stage{pointer-events:none}
+.page{
+  position:absolute;inset:0;visibility:hidden;display:flex;
+  padding:var(--top) var(--gut) 1.4rem;
+  overflow-y:auto;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain;
+  will-change:transform;contain:layout paint style;
+}
+.page::-webkit-scrollbar{display:none}
+.page.is-active{visibility:visible}
+.page__in{width:100%;max-width:1180px;margin:auto}   /* margin:auto centra sin cortar el contenido si no cabe */
+.page__head{display:flex;justify-content:space-between;align-items:flex-end;gap:.6rem 2rem;flex-wrap:wrap;margin-bottom:clamp(.7rem,1.6vw,1.2rem)}
+.hint{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted)}
+.hint svg{width:.9rem;height:.9rem;fill:currentColor}
+
+/* Líneas de velocidad y velo oscuro durante el cambio de pantalla */
+.warp{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 50%,rgba(16,20,48,.62),rgba(6,8,20,.94))}
+.streak{position:absolute;left:0;border-radius:2px;will-change:transform;backface-visibility:hidden}
+
+/* ───────── Bento ───────── */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.card{
+  position:relative;grid-column:span var(--s,12);min-width:0;
+  padding:clamp(1.1rem,2vw,1.7rem);border-radius:var(--r);
+  background:var(--card);
+  border:1px solid var(--line);box-shadow:var(--sh);
+}
+.s3{--s:3}.s4{--s:4}.s5{--s:5}.s6{--s:6}.s7{--s:7}.s8{--s:8}
+.tag{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1rem;color:var(--muted)}
+.tag::before{content:"";width:.55rem;height:.55rem;border-radius:3px;background:var(--accent)}
+
+
+/* ───────── Inicio ───────── */
+.hero{display:flex;flex-direction:column;justify-content:center}
+.hero__title{font-weight:800;font-size:clamp(2.3rem,4.4vw,4rem);line-height:1.04;letter-spacing:-.035em;margin:0 0 1.2rem}
+.swap{
+  position:relative;display:inline-block;vertical-align:bottom;height:1.2em;overflow:hidden;
+  border-radius:.2em;transition:width .6s cubic-bezier(.2,.8,.2,1);
+}
+.swap__w{
+  position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;white-space:nowrap;
+  padding:0 .24em;border-radius:.2em;font-size:.94em;letter-spacing:0;
+  opacity:0;transform:translateY(105%);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .35s;
+}
+.swap__w.is-on{opacity:1;transform:none}
+.swap__w.is-out{opacity:0;transform:translateY(-105%)}
+.swap__w[data-s="panaderia"]{font-family:"Caprasimo",serif;font-weight:400;background:#FAD3D8;color:#5B3A2E}
+.swap__w[data-s="tatuaje"]{font-family:"Rubik Wet Paint",sans-serif;font-weight:400;background:#C1121F;color:#050404;font-size:.9em}
+.swap__w[data-s="peluqueria"]{font-family:"Jost",sans-serif;font-weight:300;letter-spacing:.02em;background:#000;color:#C9AE7C}
+.swap__w[data-s="restaurante"]{font-family:"Fraunces",serif;font-weight:600;background:#F2EEE3;color:#B54A24;box-shadow:inset 0 0 0 2px #B54A24}
+.swap__w[data-s="marca"]{font-family:var(--display);font-weight:800;background:var(--ink);color:var(--bg)}
+.hero__lede{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--muted);max-width:33rem;margin:0 0 1.5rem}
+.hero__lede strong{color:var(--ink);font-weight:600}
+.hero__cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.swap-cap{
+  display:inline-flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem;text-decoration:none;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:.9rem;max-width:33rem;transition:color .15s;cursor:pointer;
+}
+.swap-cap:hover{color:var(--ink)}
+.swap-cap .mono{color:var(--accent)}
+.swap-cap__text{transition:opacity .3s}
+
+.card--deck{display:grid;align-items:center;padding:0;overflow:hidden;background:linear-gradient(160deg,#E2E8FF 0%,#FCE4EB 100%)}
+@media (prefers-color-scheme:dark){.card--deck{background:linear-gradient(160deg,#1A2145 0%,#2B1A2C 100%)}}
+.card--deck .hint{position:absolute;right:1.2rem;top:1.1rem;z-index:10;color:#4a5166;background:rgba(255,255,255,.7);padding:.35rem .7rem;border-radius:999px}
+@media (prefers-color-scheme:dark){.card--deck .hint{color:#c6cbe0;background:rgba(0,0,0,.35)}}
+.deck{position:relative;width:100%;height:100%;min-height:clamp(16rem,34vh,26rem)}
+.deck__card{
+  position:absolute;left:11%;top:50%;translate:0 -50%;width:78%;display:block;border-radius:14px;overflow:hidden;cursor:pointer;
+  background:var(--solid);border:1px solid var(--line);padding:0;
+  box-shadow:0 24px 46px -18px rgba(20,24,50,.5);
+  transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.9);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .6s;filter:saturate(.85);
+}
+.deck__card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.deck__card:nth-child(1){--x:-16%;--y:-8%;--r:-6deg;z-index:1}
+.deck__card:nth-child(2){--x:15%;--y:-12%;--r:5deg;z-index:2}
+.deck__card:nth-child(3){--x:-12%;--y:18%;--r:4deg;z-index:3}
+.deck__card:nth-child(4){--x:15%;--y:22%;--r:-4deg;z-index:4}
+.deck__card.is-active{z-index:6;transform:translate(0,2%) rotate(0) scale(1.02);filter:none}
+
+.fact{padding:clamp(.9rem,1.6vw,1.2rem) clamp(1rem,1.8vw,1.4rem)}
+.fact b{display:block;font:700 1.1rem/1.2 var(--display);letter-spacing:-.02em;margin-bottom:.15rem}
+.fact span{color:var(--muted);font-size:.93rem}
+
+/* ───────── Proyectos ───────── */
+.stagebox{position:relative;background:var(--stage,#ddd);overflow:hidden;transition:background .4s}
+.stagebox--tatuaje{--stage:radial-gradient(120% 100% at 20% 0%,#7D0B14 0%,#1A0C0E 62%)}
+.stagebox--panaderia{--stage:linear-gradient(135deg,#FFEFD9 0%,#FAD3D8 100%)}
+.stagebox--salon{--stage:radial-gradient(110% 100% at 80% 0%,#3a2f1d 0%,#0a0a0a 60%)}
+.stagebox--restaurante{--stage:#E4DCC8}
+.stagebox--restaurante.is-dark{--stage:#17140F}
+.browser{border-radius:12px;overflow:hidden;background:#15171c;box-shadow:0 22px 50px -20px rgba(0,0,0,.6)}
+.browser__bar{display:flex;align-items:center;gap:.4rem;padding:.5rem .8rem;background:#1d2027}
+.browser__bar i{width:.6rem;height:.6rem;border-radius:50%;background:#3a3f4a}
+.browser__bar span{margin-left:.6rem;flex:1;min-width:0;padding:.18rem .7rem;border-radius:999px;background:#12141a;color:#aab1bd;font:500 .72rem/1.4 var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.phone{
+  position:absolute;right:clamp(.8rem,2.4vw,1.6rem);bottom:clamp(.8rem,2vw,1.2rem);width:25%;max-width:150px;
+  border-radius:clamp(14px,2vw,20px);border:clamp(3px,.45vw,5px) solid #0b0c10;background:#0b0c10;overflow:hidden;
+  box-shadow:0 20px 40px -14px rgba(0,0,0,.7);transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.phone img{width:100%;aspect-ratio:360/670;object-fit:cover}
+
+.tile{
+  display:flex;flex-direction:column;padding:0;overflow:hidden;text-align:left;cursor:pointer;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;
+}
+.tile:hover{transform:translateY(-6px)}
+.tile .stagebox{flex:1;min-height:clamp(260px,44vh,430px);padding:clamp(.9rem,1.6vw,1.3rem)}
+.tile .browser{transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .browser{transform:translateY(-3%) scale(1.03)}
+.tile .phone{width:46%;max-width:none;right:clamp(.7rem,1.4vw,1.1rem);bottom:clamp(.7rem,1.4vw,1.1rem)}
+.tile:hover .phone{transform:translateY(-8px)}
+.tile__foot{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem;padding:1rem 1.2rem 1.15rem;background:var(--solid)}
+.tile__foot h3{font-size:1.25rem}
+.tile__foot p{margin:.1rem 0 0;color:var(--muted);font-size:.93rem;line-height:1.35}
+.chip{display:inline-flex;align-items:center;gap:.4rem;font:600 .85rem/1 var(--body);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--line);white-space:nowrap;transition:background .2s,color .2s}
+.tile:hover .chip{background:var(--ink);color:var(--bg)}
+.badge{display:inline-block;padding:.28rem .7rem;border-radius:999px;font:600 .72rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.badge--demo{background:var(--accent);color:var(--accent-ink)}
+.badge--tpl{border:1.5px solid var(--ink)}
+.note{margin:.9rem .4rem 0;color:var(--muted);font-size:.95rem}
+
+/* ───────── Detalle de proyecto (diálogo) ───────── */
+.case{
+  position:fixed;border:0;padding:0;background:var(--solid);color:var(--ink);border-radius:clamp(22px,3vw,32px);
+  width:min(1080px,calc(100% - 1.6rem));max-height:calc(100dvh - 1.6rem);overflow:hidden;
+  box-shadow:0 50px 120px -30px rgba(0,0,0,.65);
+}
+.case::backdrop{background:rgba(10,12,20,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.case[open]{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.97)}}
+.case__close{
+  position:absolute;top:.9rem;right:.9rem;z-index:5;width:2.6rem;height:2.6rem;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;background:var(--solid);border:1px solid var(--line);box-shadow:var(--sh);transition:transform .2s;
+}
+.case__close:hover{transform:rotate(90deg)}
+.case__close svg{width:1rem;height:1rem;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round}
+.case__inner{max-height:calc(100dvh - 1.6rem);overflow:auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.case__media{padding:clamp(.9rem,2vw,1.4rem);display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.case__media .stagebox{border-radius:calc(var(--r) - 4px);padding:clamp(1rem,2.4vw,1.8rem) clamp(1rem,2.4vw,1.8rem) clamp(2.4rem,5vw,3.6rem)}
+.case__body{padding:clamp(1.6rem,3.4vw,2.8rem);padding-top:clamp(3.4rem,4vw,3.6rem)}
+.project__tags{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:0 0 .9rem;color:var(--muted)}
+.case h3{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.8rem}
+.project__lede{font-size:1.1rem;margin:0 0 1.3rem;color:var(--muted)}
+.feat{list-style:none;margin:0 0 1.4rem;padding:0;display:grid;gap:.55rem}
+.feat li{position:relative;padding-left:1.7rem}
+.feat li::before{content:"";position:absolute;left:0;top:.5em;width:.75rem;height:.75rem;border-radius:3px;background:var(--accent);transform:rotate(45deg) scale(.8)}
+.specs{display:grid;gap:.8rem;margin:0 0 1.6rem;padding:1.1rem 0;border-block:1px solid var(--line)}
+.specs div{display:grid;grid-template-columns:6.5rem 1fr;gap:.8rem;align-items:center}
+.specs dt{color:var(--muted)}
+.specs dd{margin:0;font-size:.97rem}
+.sw{display:flex;gap:.4rem}
+.sw i{width:1.45rem;height:1.45rem;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(128,128,128,.4)}
+.modes{display:inline-flex;align-self:flex-start;gap:.3rem;padding:.25rem;border:1px solid var(--line);border-radius:999px;background:var(--soft)}
+.modes button{border:0;background:none;color:var(--muted);font:600 .85rem var(--body);padding:.4rem .9rem;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+.modes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* ───────── Servicios ───────── */
+.svc svg{width:1.9rem;height:1.9rem;margin-bottom:.8rem;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:1.15rem;margin-bottom:.4rem}
+.svc p{margin:0;color:var(--muted);max-width:30rem;font-size:.98rem}
+.svc{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.svc:hover{transform:translateY(-4px)}
+.dots{position:absolute;right:1.3rem;top:1.3rem;display:flex;gap:.3rem}
+.dots i{width:.85rem;height:.85rem;border-radius:50%;background:var(--c)}
+
+/* ───────── Precios y proceso ───────── */
+.plan{display:flex;flex-direction:column}
+.plan .tag{margin-bottom:.6rem}
+.plan__desc{margin:0 0 .9rem;color:var(--muted);font-size:.95rem}
+.plan__price{margin:0 0 .9rem;font:800 clamp(2.1rem,3.4vw,2.7rem)/1 var(--display);letter-spacing:-.04em}
+.plan__price small{display:block;margin-bottom:.2rem;font:500 .75rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.plan__price span{font:500 1rem var(--body);letter-spacing:0;color:var(--muted)}
+.plan__note{margin:-.45rem 0 .9rem;color:var(--muted);font-size:.85rem}
+.plan ul{list-style:none;margin:auto 0 0;padding:.9rem 0 0;border-top:1px solid var(--line);display:grid;gap:.45rem;font-size:.95rem}
+.plan li{position:relative;padding-left:1.4rem}
+.plan li::before{content:"";position:absolute;left:.1rem;top:.45em;width:.7rem;height:.4rem;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.step{counter-increment:s;position:relative;padding-top:1.3rem;border-top:2px solid var(--ink)}
+.step::before{content:counter(s,decimal-leading-zero);position:absolute;top:-.72rem;left:0;padding-right:.7rem;background:var(--solid);font:500 .8rem/1 var(--mono);color:var(--accent)}
+.step h3{font-size:1.1rem;margin-bottom:.3rem}
+.step p{margin:0;color:var(--muted);font-size:.93rem}
+.need{margin:1.1rem 0 0;padding:.8rem 1.1rem;border-radius:16px;background:var(--soft);font-size:.93rem}
+
+/* ───────── Sobre mí ───────── */
+.manifesto{grid-row:span 2}
+.manifesto p:not(.tag){margin:0 0 1rem;font:500 clamp(1rem,1.4vw,1.15rem)/1.45 var(--display);letter-spacing:-.01em;color:var(--muted);text-wrap:pretty}
+.manifesto p:not(.tag) b{color:var(--ink);font-weight:600}
+.manifesto small{display:block;margin-top:1.1rem;color:var(--muted);font-size:.9rem}
+.manifesto small i{color:var(--accent);font-style:normal}
+.me h2{margin-bottom:.9rem}
+.me p:not(.tag){margin:0 0 .85rem;color:var(--muted);font-size:1.02rem}
+.me h2 + p{color:var(--ink);font-size:1.15rem}
+.term{background:#0E1013;border-color:#232832;color:#E8EAEF;font:500 .88rem/1.85 var(--mono)}
+.term__bar{display:flex;gap:.4rem;margin-bottom:.8rem}
+.term__bar i{width:.65rem;height:.65rem;border-radius:50%;background:#3a3f4a}
+.term dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 1.2rem}
+.term dt{color:#8A99FF}
+.term dd{margin:0}
+.term__cmd{color:#9aa3b2;margin:0 0 .3rem}
+.term__cmd b{color:#8fe3a5;font-weight:500}
+.term__cursor{display:inline-block;width:.6rem;height:1.05em;background:#8A99FF;vertical-align:text-bottom;animation:blink 1.1s steps(2,jump-none) infinite}
+
+/* ───────── Contacto ───────── */
+.faq{display:flex;flex-direction:column;max-height:100%}
+.faq__list{overflow:auto;scrollbar-width:thin;min-height:0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{
+  list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.2rem;
+  padding:.9rem 0;font:600 1rem/1.35 var(--display);letter-spacing:-.01em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:1.8rem;height:1.8rem;display:grid;place-items:center;border:1.5px solid var(--line);border-radius:50%;font:500 1.1rem/1 var(--body);transition:transform .25s,background .2s,border-color .2s}
+.faq details[open] summary::after{transform:rotate(45deg);background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.faq details p{margin:0 0 1rem;color:var(--muted);font-size:.97rem}
+.contact h2{margin-bottom:.7rem}
+.contact__lede{margin:0 0 1rem;color:var(--muted);font-size:1.05rem}
+.promise{list-style:none;margin:0 0 1rem;padding:0;display:flex;gap:.4rem 1.3rem;flex-wrap:wrap}
+.promise li{position:relative;padding-left:1.25rem;font-size:.95rem}
+.promise li::before{content:"";position:absolute;left:0;top:.5em;width:.65rem;height:.65rem;border-radius:3px;background:var(--accent);transform:rotate(45deg) scale(.8)}
+.direct{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+.direct:empty{display:none}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field--full{grid-column:1 / -1}
+.field label{font-weight:600;font-size:.9rem}
+.field input,.field select,.field textarea{
+  width:100%;font:500 .98rem var(--body);color:var(--ink);background:var(--solid);
+  border:1.5px solid var(--line);border-radius:14px;padding:.7rem .95rem;transition:border-color .15s,box-shadow .15s;
+}
+.field select{
+  appearance:none;-webkit-appearance:none;padding-right:2.6rem;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1.5 1.5l5.5 5.5 5.5-5.5' fill='none' stroke='%238b93a1' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 1rem center;
+}
+.field textarea{min-height:5.6rem;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 28%,transparent)}
+.field input:user-invalid,.field textarea:user-invalid,.field select:user-invalid{border-color:#d4483f}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .btn:disabled{opacity:.6;cursor:progress;transform:none}
+.form__msg{grid-column:1 / -1;margin:0;padding:.85rem 1.1rem;border-radius:14px;font-weight:600}
+.form__msg[hidden]{display:none}
+.form__msg--ok{background:color-mix(in srgb,#2e9d5b 18%,transparent);border:1.5px solid #2e9d5b}
+.form__msg--err{background:color-mix(in srgb,#d4483f 16%,transparent);border:1.5px solid #d4483f}
+.foot__small{margin:.9rem .4rem 0;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;gap:.5rem 1rem;flex-wrap:wrap}
+.foot__small a{text-underline-offset:.18em}
+.form__legal{margin:0;color:var(--muted);font-size:.8rem;line-height:1.45}
+.form__legal a{color:var(--ink);text-underline-offset:.18em}
+.falta{background:#ffdf5c;color:#3a2a00;padding:0 .3em;border-radius:4px;font-weight:700}
+
+/* ───────── Pantallas bajas (portátiles pequeños) ───────── */
+@media (max-height:840px){
+  :root{--top:5rem}
+  .card{padding:1rem 1.2rem}
+  .hero__title{font-size:clamp(2rem,3.7vw,3.2rem);margin-bottom:.9rem}
+  .hero__lede{margin-bottom:1rem}
+  .swap-cap{margin-top:1rem}
+  .fact{padding:.7rem 1rem}
+  .tile .stagebox{min-height:clamp(220px,38vh,330px)}
+  .plan__desc{display:none}
+  .step p{font-size:.88rem}
+  .need{display:none}
+  .svc p{font-size:.93rem}
+  .contact__lede{display:none}
+}
+
+/* ───────── Responsive ───────── */
+@media (max-width:1180px){
+  .top__cta{display:none}
+  .top{grid-template-columns:auto 1fr}
+  .pill{justify-self:end}
+  .pill a{padding:.8rem 1.1rem;font-size:1rem}
+}
+@media (max-width:1000px){
+  .s3{--s:6}.s4,.s5,.s6,.s7,.s8{--s:12}
+  .manifesto{grid-row:auto}
+  .steps{grid-template-columns:1fr 1fr;row-gap:1.6rem}
+  .case__inner{grid-template-columns:1fr}
+  .case__body{padding-top:1.6rem}
+  .plan.s4{--s:12}
+  .tile .stagebox{min-height:260px}
+}
+@media (max-width:700px){
+  /* móvil: la píldora va ARRIBA, bajo el logo (abajo la tapaba la insignia de Netlify) */
+  :root{--top:7.6rem}
+  .top{grid-template-columns:1fr;justify-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) .6rem 10px;
+       background:linear-gradient(var(--bg) 70%,transparent)}
+  .logo{justify-self:center}
+  .pill{justify-self:center;max-width:100%;gap:0;padding:4px}
+  .pill__ind{top:4px;bottom:4px}
+  .pill a{padding:.7rem clamp(.45rem,2.2vw,.75rem);font-size:clamp(.82rem,3.6vw,.92rem)}
+  .pill .l{display:none}
+  .pill .s{display:inline}
+  .pill a[href="#inicio"]{display:none}
+  .page{padding-bottom:2rem}
+  .card--deck{display:none}          /* el visor "pasa por las webs" es de ratón: en móvil sobra */
+  .hero__title{font-size:clamp(2.2rem,10vw,3rem)}
+  .logo{font-size:1.35rem}
+}
+@media (max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .specs div{grid-template-columns:1fr;gap:.2rem}
+  .phone{width:30%}
+  .s3{--s:12}
+  .tile .phone{width:38%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="top">
+  <a class="logo" href="#inicio" aria-label="carlosdev, inicio">carlosdev</a>
+  <nav class="pill" id="pill" aria-label="Principal">
+    <span class="pill__ind" id="pill-ind" aria-hidden="true"></span>
+    <a href="#inicio" class="is-active"><span class="l">Inicio</span><span class="s">Inicio</span></a>
+    <a href="#proyectos"><span class="l">Proyectos</span><span class="s">Webs</span></a>
+    <a href="#servicios"><span class="l">Servicios</span><span class="s">Servicios</span></a>
+    <a href="#precios"><span class="l">Precios</span><span class="s">Precios</span></a>
+    <a href="#sobre-mi"><span class="l">Sobre mí</span><span class="s">Yo</span></a>
+    <a href="#contacto"><span class="l">Contacto</span><span class="s">Escríbeme</span></a>
+  </nav>
+  <a class="btn btn--solid top__cta" href="#contacto">Hablemos</a>
+</header>
+
+<div class="warp" id="warp" aria-hidden="true"></div>
+<div class="sr-only" id="live" role="status" aria-live="polite"></div>
+
+<main class="stage" id="main">
+
+  <!-- ═════ 1 · INICIO ═════ -->
+  <section class="page is-active" id="inicio" aria-label="Inicio">
+    <div class="page__in">
+      <div class="bento">
+        <div class="card hero s7">
+          <p class="tag mono">Diseño web para negocios pequeños y freelancers</p>
+          <h1 class="hero__title" tabindex="-1">
+            <span class="sr-only">Una web que se parezca a tu negocio.</span>
+            <span aria-hidden="true">Una web que se parezca a tu <span class="swap" id="swap"><span class="swap__w is-on" data-s="panaderia">panadería</span><span class="swap__w" data-s="tatuaje">estudio</span><span class="swap__w" data-s="peluqueria">peluquería</span><span class="swap__w" data-s="restaurante">restaurante</span><span class="swap__w" data-s="marca">marca</span></span>.</span>
+          </h1>
+          <p class="hero__lede">Soy Carlos y hago webs para negocios pequeños y freelancers de Las Palmas y toda Gran Canaria. <strong>Rápidas, claras en el móvil y pensadas para que te escriban</strong>, no para que se queden mirando.</p>
+          <div class="hero__cta">
+            <a class="btn btn--solid" href="#proyectos">Ver proyectos <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#contacto">Hablemos</a>
+          </div>
+          <a class="swap-cap" id="swap-cap" href="#proyectos" data-open="case-casa-migas">
+            <span class="mono">Ejemplo</span>
+            <span class="swap-cap__text" id="swap-cap-text">Casa Migas · panadería de barrio</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="card card--deck s5">
+          <span class="hint mono"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5l10 5.6-4.3 1.2L7.6 12.7z"/></svg>Pasa por las webs</span>
+          <div class="deck" id="deck" role="group" aria-label="Vista previa de los cuatro proyectos">
+            <button class="deck__card" type="button" data-s="panaderia" data-open="case-casa-migas" aria-label="Ver el proyecto Casa Migas"><img src="img/panaderia.webp" width="1200" height="675" alt="Portada de la web de Casa Migas, una panadería" fetchpriority="high"></button>
+            <button class="deck__card" type="button" data-s="tatuaje" data-open="case-mala-tinta" aria-label="Ver el proyecto Mala Tinta"><img src="img/tatuajes.webp" width="1200" height="675" alt="Portada de la web de Mala Tinta, un estudio de tatuajes" fetchpriority="high"></button>
+            <button class="deck__card" type="button" data-s="peluqueria" data-open="case-salon" aria-label="Ver la plantilla de salón"><img src="img/salon.webp" width="1200" height="675" alt="Portada de la plantilla para salones y peluquerías"></button>
+            <button class="deck__card" type="button" data-s="restaurante" data-open="case-restaurante" aria-label="Ver la plantilla de restaurante"><img src="img/restaurante-claro.webp" width="1200" height="675" alt="Portada de la plantilla para restaurantes y bares"></button>
+          </div>
+        </div>
+
+        <div class="card fact s3"><b>4 webs</b><span>Dos a medida y dos plantillas</span></div>
+        <div class="card fact s3"><b>Diseño propio</b><span>Cada negocio, su estilo</span></div>
+        <div class="card fact s3"><b>Móvil primero</b><span>Se ven bien en el teléfono</span></div>
+        <div class="card fact s3"><b>Contacto directo</b><span>WhatsApp, llamada o formulario</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════ 2 · PROYECTOS ═════ -->
+  <section class="page" id="proyectos" aria-labelledby="t-proyectos">
+    <div class="page__in">
+      <div class="page__head">
+        <h2 id="t-proyectos" tabindex="-1">Ningún negocio se parece a otro. Sus webs tampoco.</h2>
+        <span class="hint mono"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5l10 5.6-4.3 1.2L7.6 12.7z"/></svg>Pulsa una para ver el detalle</span>
+      </div>
+
+      <div class="bento">
+        <button class="card tile s3" type="button" data-open="case-mala-tinta" aria-label="Ver el proyecto Mala Tinta, estudio de tatuajes">
+          <div class="stagebox stagebox--tatuaje">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/tatuajes.webp" width="1200" height="675" alt=""></div>
+            <div class="phone"><img src="img/tatuajes-movil.webp" width="360" height="670" alt=""></div>
+          </div>
+          <div class="tile__foot"><div><h3>Mala Tinta</h3><p>Estudio de tatuajes · demo completa</p></div><span class="chip">Ver detalle <span aria-hidden="true">+</span></span></div>
+        </button>
+
+        <button class="card tile s3" type="button" data-open="case-casa-migas" aria-label="Ver el proyecto Casa Migas, panadería de barrio">
+          <div class="stagebox stagebox--panaderia">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/panaderia.webp" width="1200" height="675" alt=""></div>
+            <div class="phone"><img src="img/panaderia-movil.webp" width="360" height="670" alt=""></div>
+          </div>
+          <div class="tile__foot"><div><h3>Casa Migas</h3><p>Panadería de barrio · demo completa</p></div><span class="chip">Ver detalle <span aria-hidden="true">+</span></span></div>
+        </button>
+
+        <button class="card tile s3" type="button" data-open="case-salon" aria-label="Ver la plantilla de salón, peluquería y estética">
+          <div class="stagebox stagebox--salon">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/salon.webp" width="1200" height="675" alt=""></div>
+            <div class="phone"><img src="img/salon-movil.webp" width="360" height="670" alt=""></div>
+          </div>
+          <div class="tile__foot"><div><h3>Salón</h3><p>Peluquería y estética · plantilla</p></div><span class="chip">Ver detalle <span aria-hidden="true">+</span></span></div>
+        </button>
+
+        <button class="card tile s3" type="button" data-open="case-restaurante" aria-label="Ver la plantilla de restaurante, bares y cafeterías">
+          <div class="stagebox stagebox--restaurante">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/restaurante-claro.webp" width="1200" height="675" alt=""></div>
+            <div class="phone"><img src="img/restaurante-claro-movil.webp" width="360" height="670" alt=""></div>
+          </div>
+          <div class="tile__foot"><div><h3>Restaurante</h3><p>Bares y cafeterías · plantilla</p></div><span class="chip">Ver detalle <span aria-hidden="true">+</span></span></div>
+        </button>
+      </div>
+      <p class="note">Dos demos completas, hechas desde cero, y dos plantillas listas para rellenar. Los datos que ves son inventados; el diseño, no.</p>
+    </div>
+  </section>
+
+  <!-- ═════ 3 · SERVICIOS ═════ -->
+  <section class="page" id="servicios" aria-labelledby="t-servicios">
+    <div class="page__in">
+      <div class="page__head"><h2 id="t-servicios" tabindex="-1">Lo que hago, sin jerga.</h2></div>
+
+      <div class="bento">
+        <div class="card svc s7">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+          <h3>Web de presentación</h3>
+          <p>Quién eres, qué ofreces y dónde encontrarte, en una página clara que se entiende en cinco segundos. Para un negocio pequeño o para alguien que trabaja por su cuenta, la web tiene que hacer pocas cosas, y hacerlas bien.</p>
+        </div>
+        <div class="card svc s5">
+          <div class="dots" aria-hidden="true"><i style="--c:#C1121F"></i><i style="--c:#F6B9C2"></i><i style="--c:#C9AE7C"></i><i style="--c:#B54A24"></i></div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.6-.3-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg>
+          <h3>Diseño que se parece a ti</h3>
+          <p>Colores, tipografías y tono propios del negocio. Mira los proyectos: ninguno se parece a otro.</p>
+        </div>
+        <div class="card svc s5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+          <h3>Pensada para el móvil</h3>
+          <p>Tus clientes te buscan desde el teléfono, así que la web se diseña primero para ahí.</p>
+        </div>
+        <div class="card svc s7">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9.5h8M8 12.5h5"/></svg>
+          <h3>Contacto directo</h3>
+          <p>Botón de WhatsApp, llamada con un toque y formulario. Que escribirte sea lo más fácil de la página.</p>
+        </div>
+        <div class="card svc s6">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+          <h3>Lista para publicar</h3>
+          <p>Te entrego los archivos listos para subir o, en una web a medida, te la dejo online y funcionando, con dirección propia si quieres tu dominio.</p>
+        </div>
+        <div class="card svc s6">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>
+          <h3>Cambios cuando los necesites</h3>
+          <p>Nuevo horario, nueva carta, nueva foto: me lo dices y lo actualizo, sin que tengas que tocar nada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════ 4 · PRECIOS Y PROCESO ═════ -->
+  <section class="page" id="precios" aria-labelledby="t-precios">
+    <div class="page__in">
+      <div class="page__head"><h2 id="t-precios" tabindex="-1">Dos formas de tener tu web (y una para cuidarla).</h2></div>
+
+      <div class="bento">
+        <div class="card plan s4">
+          <p class="tag mono">Diseño web</p>
+          <p class="plan__desc">Te diseño la web y te entrego los archivos listos para que la publiques tú.</p>
+          <p class="plan__price"><small>desde</small>50 €</p>
+          <p class="plan__note">Solo la web en HTML, sin subirla ni asesoramiento</p>
+          <ul><li>Diseño adaptado a tu negocio</li><li>Tus textos, tus fotos y tus colores</li><li>Entrega de los archivos HTML</li></ul>
+        </div>
+        <div class="card plan s4">
+          <p class="tag mono">A medida</p>
+          <p class="plan__desc">Diseño propio desde cero, como Mala Tinta o Casa Migas: la web que solo podría ser tuya.</p>
+          <p class="plan__price"><small>desde</small>80 €</p>
+          <p class="plan__note">Precio variable según el encargo</p>
+          <ul><li>Paleta, tipografías e ilustraciones propias</li><li>Secciones pensadas para tu negocio</li><li>Ajustes hasta que te convenza</li></ul>
+        </div>
+        <div class="card plan s4">
+          <p class="tag mono">Cuidado anual</p>
+          <p class="plan__desc">Para que la web no se quede vieja. Yo me ocupo de tenerla al día.</p>
+          <p class="plan__price">120 € <span>/ año + dominio</span></p>
+          <p class="plan__note">Sale a 10 € al mes, más el dominio</p>
+          <ul><li>Cambios de textos, horarios y fotos</li><li>Revisión de que todo sigue funcionando</li><li>Respuesta cuando me escribas</li></ul>
+        </div>
+
+        <div class="card" id="proceso">
+          <ol class="steps">
+            <li class="step"><h3>Charlamos</h3><p>Una conversación corta: tu negocio, tu cliente tipo y qué quieres que haga la web.</p></li>
+            <li class="step"><h3>Te enseño el diseño</h3><p>Ves cómo quedaría antes de publicar nada. Si no te gusta, lo cambiamos ahí.</p></li>
+            <li class="step"><h3>Ajustamos</h3><p>Textos, fotos, colores. Retocamos hasta que digas “esta soy yo”.</p></li>
+            <li class="step"><h3>Entregamos</h3><p>Te paso los archivos o, si lo hemos acordado, la dejo online y funcionando. Y sigo ahí por si me necesitas.</p></li>
+          </ol>
+          <p class="need"><b>Qué necesito de ti:</b> tu logo si lo tienes, unas cuantas fotos, el horario, la dirección y tus servicios o tu carta. Si no tienes fotos o logo, lo pensamos juntos.</p>
+        </div>
+      </div>
+      <p class="note">Precios con IVA incluido. El de tu web te lo doy cerrado antes de empezar, según lo que necesites. Sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- ═════ 5 · SOBRE MÍ ═════ -->
+  <section class="page" id="sobre-mi" aria-label="Sobre mí">
+    <div class="page__in">
+      <div class="bento">
+        <div class="card manifesto s5">
+          <p class="tag mono">Lo que pienso de las webs</p>
+          <p><b>hago webs.</b></p>
+          <p>creo que una web debería parecerse a quien la tiene.</p>
+          <p>creo que un negocio pequeño merece una web tan cuidada como uno grande.</p>
+          <p>creo que la web tiene que hacer pocas cosas, y hacerlas bien.</p>
+          <p>creo que el móvil va primero, no último.</p>
+          <p>creo que si no sé hacer algo, lo digo.</p>
+          <p><b>lo mejor: una web que te traiga mensajes, no visitas.</b></p>
+          <small><i>*</i> y que se vea bonita, claro.</small>
+        </div>
+
+        <div class="card me s7">
+          <p class="tag mono">Sobre mí</p>
+          <h2 id="t-sobre" tabindex="-1">Hola, soy Carlos.</h2>
+          <p>Hago webs para negocios pequeños y para gente que trabaja por su cuenta, en Las Palmas y en toda Gran Canaria.</p>
+          <p>Me formo en programación y me enganché a las webs al ver cuántos negocios buenos de barrio tienen una web que no les hace justicia, o directamente ninguna. Cada proyecto de esta página lo he diseñado y programado yo, desde cero y a mano.</p>
+          <p>Estoy empezando y no lo escondo. Por eso cuido cada detalle y te hablo claro. Si algo no sé hacerlo, te lo digo.</p>
+          <a class="btn btn--solid" href="#contacto" style="margin-top:.3rem">Cuéntame tu negocio</a>
+        </div>
+
+        <div class="card term s7" role="group" aria-label="Datos rápidos sobre carlosdev">
+          <div class="term__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="term__cmd"><b>$</b> carlos --datos-rapidos</p>
+          <dl>
+            <dt>hace</dt><dd>webs con diseño propio</dd>
+            <dt>para</dt><dd>negocios pequeños y freelancers</dd>
+            <dt>dónde</dt><dd>Las Palmas y toda Gran Canaria</dd>
+            <dt>usa</dt><dd>HTML, CSS y JavaScript</dd>
+            <dt>habla</dt><dd>español, sin jerga</dd>
+            <dt>responde</dt><dd>en 48 horas<span class="term__cursor" aria-hidden="true"></span></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════ 6 · CONTACTO (con dudas frecuentes) ═════ -->
+  <section class="page" id="contacto" aria-labelledby="t-contacto">
+    <div class="page__in">
+      <div class="bento">
+        <div class="card faq s5" id="faq">
+          <p class="tag mono">Dudas frecuentes</p>
+          <div class="faq__list">
+            <details>
+              <summary>¿Cuánto cuesta una web?</summary>
+              <p>El diseño web empieza en 50 € y una web a medida en 80 €; el precio final depende de cuántas secciones y qué necesites. Cuéntame tu caso y te doy un precio cerrado antes de empezar.</p>
+            </details>
+            <details>
+              <summary>¿Cuánto tarda?</summary>
+              <p>Una web sencilla va rápido; una a medida con más secciones lleva algo más. En la primera charla te digo un plazo realista para tu caso, no uno de cara a la galería.</p>
+            </details>
+            <details>
+              <summary>¿Necesito tener dominio propio?</summary>
+              <p>No es obligatorio para empezar, pero te lo recomiendo: una dirección con el nombre de tu negocio da más confianza. En una web a medida te ayudo a elegirlo y a configurarlo.</p>
+            </details>
+            <details>
+              <summary>¿Qué pasa si no tengo fotos ni logo?</summary>
+              <p>No pasa nada. Lo vemos juntos: podemos empezar con lo que tengas y mejorarlo luego, o buscar alternativas que no estropeen el diseño.</p>
+            </details>
+            <details>
+              <summary>¿Podré cambiar cosas después?</summary>
+              <p>Sí. Horarios, precios, la carta, una foto nueva. Me lo dices y lo actualizo, o lo incluimos en el cuidado anual.</p>
+            </details>
+            <details>
+              <summary>¿Se verá bien en el móvil?</summary>
+              <p>Es lo primero que diseño y lo último que reviso. Las cuatro webs están pensadas para verse bien desde el teléfono; puedes comprobarlo abriéndolas.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="card contact s7">
+          <p class="tag mono">Contacto</p>
+          <h2 id="t-contacto" tabindex="-1">¿Tienes un negocio? Cuéntamelo.</h2>
+          <p class="contact__lede">Cuatro líneas bastan: qué haces, si ya tienes web y qué te gustaría que hiciera la nueva.</p>
+          <ul class="promise">
+            <li>Te respondo en 48 horas</li>
+            <li>Primera charla sin compromiso</li>
+            <li>Hablo claro, sin jerga</li>
+          </ul>
+          <div class="direct" id="direct"></div>
+
+          <form class="form" id="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contacto">
+            <p class="hp" aria-hidden="true"><label>No rellenes esto: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="contacto-medio">Email o WhatsApp</label>
+              <input id="contacto-medio" name="contacto" type="text" autocomplete="email" required>
+            </div>
+            <div class="field field--full">
+              <label for="tipo">¿Qué tipo de negocio tienes?</label>
+              <select id="tipo" name="tipo" required>
+                <option value="" disabled selected>Elige una opción</option>
+                <option>Panadería o pastelería</option>
+                <option>Restaurante, bar o cafetería</option>
+                <option>Peluquería o estética</option>
+                <option>Estudio de tatuajes</option>
+                <option>Soy freelance</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="mensaje">Cuéntame un poco</label>
+              <textarea id="mensaje" name="mensaje" placeholder="¿Tienes web ahora? ¿Qué te gustaría que hiciera la nueva?" required></textarea>
+            </div>
+            <div class="field--full">
+              <button class="btn btn--solid" type="submit" id="send">Enviar mensaje <span class="btn__arrow" aria-hidden="true">→</span></button>
+            </div>
+            <p class="form__legal field--full">Uso tus datos solo para responderte y, si me lo pides, darte presupuesto. No los cedo a nadie y puedes pedirme que los borre cuando quieras. Responsable: Carlos Manuel Rodríguez Rodríguez. Más detalle en la <a href="legal.html#privacidad">política de privacidad</a>.</p>
+            <p class="form__msg" id="form-msg" role="status" hidden></p>
+          </form>
+        </div>
+      </div>
+      <p class="foot__small"><span>© <span id="year">2026</span> carlosdev · <a href="legal.html#aviso-legal">Aviso legal</a> · <a href="legal.html#privacidad">Privacidad</a> · <a href="legal.html#cookies">Cookies</a></span><span>Hecho a mano con HTML, CSS y paciencia.</span></p>
+    </div>
+  </section>
+</main>
+
+<!-- ═════ DETALLE DE CADA PROYECTO ═════ -->
+<dialog class="case" id="case-mala-tinta" aria-labelledby="ct-mala-tinta">
+  <button class="case__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+  <div class="case__inner">
+    <div class="case__media">
+      <div class="stagebox stagebox--tatuaje">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>carlosdev-demo3.netlify.app</span></div><img src="img/tatuajes.webp" width="1200" height="675" alt="Web de Mala Tinta: el rótulo negro gotea tinta sobre fondo rojo"></div>
+        <div class="phone"><img src="img/tatuajes-movil.webp" width="360" height="670" alt="Mala Tinta en el móvil"></div>
+      </div>
+    </div>
+    <div class="case__body">
+      <p class="project__tags"><span class="badge badge--demo">Demo completa</span><span class="mono">Estudio de tatuajes</span></p>
+      <h3 id="ct-mala-tinta">Mala Tinta</h3>
+      <p class="project__lede">Un estudio con una sola artista y mucha personalidad. La web tenía que sonar a rock, y la tinta gotea de verdad.</p>
+      <ul class="feat">
+        <li>Rótulo con tinta que gotea, animación propia</li>
+        <li>Muestras de lettering con tamaño y precio</li>
+        <li>Sección “quién te tatúa” pensada para un solo artista</li>
+        <li>Cita por WhatsApp o formulario, en dos toques</li>
+      </ul>
+      <dl class="specs">
+        <div><dt class="mono">Para</dt><dd>Estudios de tatuaje y artistas independientes</dd></div>
+        <div><dt class="mono">Tipografías</dt><dd><span style="font-family:'Rubik Wet Paint'">Rubik Wet Paint</span> · <span style="font-family:'Grenze Gotisch';font-weight:900">Grenze Gotisch</span> · <span style="font-family:'Barlow';font-weight:600">Barlow</span></dd></div>
+        <div><dt class="mono">Paleta</dt><dd><span class="sw" role="img" aria-label="Rojo sangre, negro tinta, hueso y granate oscuro"><i style="--c:#C1121F" title="#C1121F"></i><i style="--c:#050404" title="#050404"></i><i style="--c:#E9E2D2" title="#E9E2D2"></i><i style="--c:#7D0B14" title="#7D0B14"></i></span></dd></div>
+      </dl>
+      <a class="btn btn--solid" href="https://carlosdev-demo3.netlify.app" target="_blank" rel="noopener">Abrir la web en vivo <span class="btn__arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="case" id="case-casa-migas" aria-labelledby="ct-casa-migas">
+  <button class="case__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+  <div class="case__inner">
+    <div class="case__media">
+      <div class="stagebox stagebox--panaderia">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>carlosdev-demo005.netlify.app</span></div><img src="img/panaderia.webp" width="1200" height="675" alt="Web de Casa Migas: toldo a rayas rosas, titular y una hogaza con vapor"></div>
+        <div class="phone"><img src="img/panaderia-movil.webp" width="360" height="670" alt="Casa Migas en el móvil"></div>
+      </div>
+    </div>
+    <div class="case__body">
+      <p class="project__tags"><span class="badge badge--demo">Demo completa</span><span class="mono">Panadería de barrio</span></p>
+      <h3 id="ct-casa-migas">Casa Migas</h3>
+      <p class="project__lede">Una panadería recién abierta que quiere que el barrio pase por la puerta. Colores de pastelería y un toldo de los de antes.</p>
+      <ul class="feat">
+        <li>Paleta pastel y toldo propios, nada de plantilla genérica</li>
+        <li>Carta con ilustraciones dibujadas para la ocasión</li>
+        <li>Indicador de “abierto ahora” con la hora real</li>
+        <li>Encargos por WhatsApp o formulario</li>
+      </ul>
+      <dl class="specs">
+        <div><dt class="mono">Para</dt><dd>Panaderías, pastelerías y obradores pequeños</dd></div>
+        <div><dt class="mono">Tipografías</dt><dd><span style="font-family:'Caprasimo'">Caprasimo</span> · <span style="font-family:'Nunito';font-weight:700">Nunito</span> · <span style="font-family:'Caveat',cursive;font-weight:700">Caveat</span></dd></div>
+        <div><dt class="mono">Paleta</dt><dd><span class="sw" role="img" aria-label="Rosa, mantequilla, melocotón, pistacho y cacao"><i style="--c:#F6B9C2" title="#F6B9C2"></i><i style="--c:#FFEDB5" title="#FFEDB5"></i><i style="--c:#FFD9BD" title="#FFD9BD"></i><i style="--c:#DDE8C6" title="#DDE8C6"></i><i style="--c:#5B3A2E" title="#5B3A2E"></i></span></dd></div>
+      </dl>
+      <a class="btn btn--solid" href="https://carlosdev-demo005.netlify.app" target="_blank" rel="noopener">Abrir la web en vivo <span class="btn__arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="case" id="case-salon" aria-labelledby="ct-salon">
+  <button class="case__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+  <div class="case__inner">
+    <div class="case__media">
+      <div class="stagebox stagebox--salon">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>carlosdev-demo2.netlify.app</span></div><img src="img/salon.webp" width="1200" height="675" alt="Plantilla para salones: fondo negro, detalles dorados y una foto de peluquería"></div>
+        <div class="phone"><img src="img/salon-movil.webp" width="360" height="670" alt="La plantilla de salón en el móvil"></div>
+      </div>
+    </div>
+    <div class="case__body">
+      <p class="project__tags"><span class="badge badge--tpl">Plantilla</span><span class="mono">Peluquería y estética</span></p>
+      <h3 id="ct-salon">Salón</h3>
+      <p class="project__lede">Negro y dorado suave para negocios de belleza. Se sustituyen los huecos entre corchetes por los datos reales y está lista.</p>
+      <ul class="feat">
+        <li>Logo de ejemplo listo para cambiar por el tuyo</li>
+        <li>Servicios, opiniones de clientes y botón de llamar</li>
+        <li>Instrucciones dentro del propio archivo</li>
+        <li>Fotos de ejemplo de uso libre</li>
+      </ul>
+      <dl class="specs">
+        <div><dt class="mono">Para</dt><dd>Peluquerías, centros de estética y negocios de servicios</dd></div>
+        <div><dt class="mono">Tipografía</dt><dd><span style="font-family:'Jost';font-weight:300;font-size:1.1em">Jost</span></dd></div>
+        <div><dt class="mono">Paleta</dt><dd><span class="sw" role="img" aria-label="Negro, dorado suave, hueso y gris cálido"><i style="--c:#000000" title="#000000"></i><i style="--c:#C9AE7C" title="#C9AE7C"></i><i style="--c:#ECE5D8" title="#ECE5D8"></i><i style="--c:#B8AF9F" title="#B8AF9F"></i></span></dd></div>
+      </dl>
+      <a class="btn btn--solid" href="https://carlosdev-demo2.netlify.app" target="_blank" rel="noopener">Abrir la plantilla en vivo <span class="btn__arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="case" id="case-restaurante" aria-labelledby="ct-restaurante">
+  <button class="case__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+  <div class="case__inner">
+    <div class="case__media">
+      <div class="stagebox stagebox--restaurante" id="stage-rest">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>carlosdev-demo.netlify.app</span></div><img id="rest-d" src="img/restaurante-claro.webp" data-light="img/restaurante-claro.webp" data-dark="img/restaurante-oscuro.webp" width="1200" height="675" alt="Plantilla para restaurantes y bares con titular grande y carta de platos"></div>
+        <div class="phone"><img id="rest-m" src="img/restaurante-claro-movil.webp" data-light="img/restaurante-claro-movil.webp" data-dark="img/restaurante-oscuro-movil.webp" width="360" height="670" alt="La plantilla de restaurante en el móvil"></div>
+      </div>
+      <div class="modes" role="group" aria-label="Tema de la plantilla de restaurante">
+        <button type="button" data-mode="light" aria-pressed="true">Claro</button>
+        <button type="button" data-mode="dark" aria-pressed="false">Oscuro</button>
+      </div>
+    </div>
+    <div class="case__body">
+      <p class="project__tags"><span class="badge badge--tpl">Plantilla</span><span class="mono">Restaurantes y bares</span></p>
+      <h3 id="ct-restaurante">Restaurante</h3>
+      <p class="project__lede">Una base cálida para sitios donde se viene a comer sin prisas. Cambia sola entre tema claro y oscuro según el móvil de cada cliente.</p>
+      <ul class="feat">
+        <li>Carta con platos destacados</li>
+        <li>Horario y cómo llegar, a la vista</li>
+        <li>Botón de reservar mesa siempre a mano</li>
+        <li>Tema claro y oscuro automático</li>
+      </ul>
+      <dl class="specs">
+        <div><dt class="mono">Para</dt><dd>Restaurantes, bares y cafeterías</dd></div>
+        <div><dt class="mono">Tipografías</dt><dd><span style="font-family:'Fraunces';font-weight:600">Fraunces</span> · <span style="font-family:'Work Sans';font-weight:500">Work Sans</span></dd></div>
+        <div><dt class="mono">Paleta</dt><dd><span class="sw" role="img" aria-label="Papel, ladrillo, mango y tinta"><i style="--c:#F2EEE3" title="#F2EEE3"></i><i style="--c:#B54A24" title="#B54A24"></i><i style="--c:#E8A33D" title="#E8A33D"></i><i style="--c:#1B1B18" title="#1B1B18"></i></span></dd></div>
+      </dl>
+      <a class="btn btn--solid" href="https://carlosdev-demo.netlify.app" target="_blank" rel="noopener">Abrir la plantilla en vivo <span class="btn__arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  document.documentElement.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  /* ═══ TUS DATOS DE CONTACTO ═══
+     Rellena lo que quieras mostrar: lo que dejes vacío no aparece en la web.
+     whatsapp: solo números con prefijo, sin + ni espacios (ej. '34600111222'). */
+  const CONTACTO = {
+    whatsapp: '34601480630',
+    telefono: '601480630',   // para el botón "Llamar"; vacío = sin botón
+    email: 'cmr6vanish@gmail.com',
+    instagram: 'carlitus.y.snupi'   // sin @
+  };
+
+  $('#year').textContent = new Date().getFullYear();
+
+  /* ═══ PANTALLAS: navegación lateral, sin scroll de página ═══ */
+  const IDS = ['inicio', 'proyectos', 'servicios', 'precios', 'sobre-mi', 'contacto'];
+  const ALIAS = { proceso: 'precios', faq: 'contacto' };
+  const pages = IDS.map(id => document.getElementById(id));
+  const pill = $('#pill'), ind = $('#pill-ind'), links = $$('a', pill);
+  const warp = $('#warp'), live = $('#live');
+  let cur = 0, busy = false, pending = null;
+
+  pages.forEach((p, i) => { if (i !== 0) { p.inert = true; p.setAttribute('aria-hidden', 'true'); } });
+
+  function moveInd(a, instant) {
+    if (!a || !a.offsetWidth) return;
+    if (instant) ind.style.transition = 'none';          // sin deslizar: carga, cambio de tamaño o tipografías
+    ind.style.width = a.offsetWidth + 'px';
+    ind.style.transform = `translateX(${a.offsetLeft}px)`;
+    if (instant) { ind.offsetWidth; ind.style.transition = ''; }
+  }
+  function setNav(i, instant) {
+    links.forEach((a, k) => {
+      a.classList.toggle('is-active', k === i);
+      if (k === i) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    moveInd(links[i], instant);
+  }
+
+  // Líneas blancas que salen disparadas hacia atrás, como si todo acelerara de golpe
+  function speedLines(dir) {
+    if (reduce) return [];
+    const W = innerWidth, H = innerHeight;
+    const n = W < 700 ? 18 : 34;
+    const anims = [];
+    for (let k = 0; k < n; k++) {
+      const len = rand(.16, .72) * W;
+      const th = Math.random() < .18 ? rand(2.5, 3.5) : rand(1, 2);
+      const el = document.createElement('i');
+      el.className = 'streak';
+      el.style.cssText =
+        `top:${rand(0, H)}px;width:${len}px;height:${th}px;opacity:${rand(.35, .95)};` +
+        `background:linear-gradient(${dir > 0 ? '90deg' : '270deg'},#fff 0%,rgba(255,255,255,.55) 35%,rgba(255,255,255,0) 100%)`;
+      warp.appendChild(el);
+      // dir > 0: el contenido se mueve a la izquierda y la estela queda a su derecha
+      const from = dir > 0 ? W : -len;
+      const to = dir > 0 ? -len * 1.2 : W + len * .2;
+      anims.push(el.animate(
+        [{ transform: `translateX(${from}px) scaleX(.5)` }, { transform: `translateX(${to}px) scaleX(1.5)` }],
+        { duration: rand(480, 720), delay: rand(0, 260), easing: 'cubic-bezier(.65,0,.95,.5)', fill: 'both' }
+      ));
+    }
+    return anims;
+  }
+
+  async function go(to, opts = {}) {
+    if (to === cur || to < 0 || to >= pages.length) return;
+    if (busy) { pending = to; return; }
+    busy = true;
+    const dir = to > cur ? 1 : -1;
+    const out = pages[cur], inn = pages[to];
+    const name = links[to].querySelector('.l').textContent;
+    inn.inert = false; inn.removeAttribute('aria-hidden');
+    out.inert = true; out.setAttribute('aria-hidden', 'true');
+    // la pantalla entrante nace YA fuera de la vista: así no se ve ni un fotograma quieta sobre la otra
+    if (!(opts.instant || reduce)) inn.style.transform = `translateX(${dir * 110}%)`;
+    inn.classList.add('is-active');
+    inn.getBoundingClientRect();                       // fuerza el pintado previo
+    setNav(to);
+    history.replaceState(null, '', '#' + IDS[to]);
+    document.title = (to === 0 ? '' : name + ' · ') + 'carlosdev — Webs para negocios pequeños y freelancers en Gran Canaria';
+    live.textContent = name;
+
+    if (opts.instant || reduce) {
+      out.classList.remove('is-active');
+    } else {
+      document.documentElement.classList.add('warping');
+      const lines = speedLines(dir);                       // se preparan antes de arrancar
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const D = 900, ease = 'cubic-bezier(.8,0,.15,1)';   // arranca despacio y acelera con fuerza
+      const skew = `skewX(${-dir * 9}deg)`;
+      const a1 = out.animate([
+        { transform: 'translateX(0) skewX(0)' },
+        { transform: `translateX(${-dir * 40}%) ${skew}`, offset: .5 },
+        { transform: `translateX(${-dir * 110}%) skewX(0)` }
+      ], { duration: D, easing: ease, fill: 'both' });
+      const a2 = inn.animate([
+        { transform: `translateX(${dir * 110}%) skewX(0)` },
+        { transform: `translateX(${dir * 40}%) ${skew}`, offset: .5 },
+        { transform: 'translateX(0) skewX(0)' }
+      ], { duration: D, easing: ease, fill: 'both' });
+      const a3 = warp.animate(
+        [{ opacity: 0 }, { opacity: 1, offset: .3 }, { opacity: 1, offset: .62 }, { opacity: 0 }],
+        { duration: D + 120, easing: 'ease-in-out', fill: 'both' }
+      );
+      await Promise.allSettled([a1.finished, a2.finished, a3.finished, ...lines.map(l => l.finished)]);
+      [a1, a2, a3].forEach(a => a.cancel());
+      inn.style.transform = '';
+      warp.replaceChildren();
+      out.classList.remove('is-active');
+      document.documentElement.classList.remove('warping');
+    }
+
+    cur = to;
+    inn.scrollTop = 0; out.scrollTop = 0;
+    const h = $('h1,h2', inn); if (h) h.focus({ preventScroll: true });
+    busy = false;
+    if (pending !== null) { const p = pending; pending = null; go(p); }
+  }
+
+  const pageFromHash = h => {
+    const id = (h || '').replace('#', '');
+    if (IDS.includes(id)) return IDS.indexOf(id);
+    if (ALIAS[id]) return IDS.indexOf(ALIAS[id]);
+    return -1;
+  };
+
+  // todos los enlaces internos (píldora, logo, botones, pie…) pasan por aquí
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.dataset.open) return;               // el pie de la palabra abre un detalle: lo gestiona otro manejador
+    const i = pageFromHash(a.getAttribute('href'));
+    if (i < 0) return;
+    e.preventDefault();
+    go(i);
+  });
+
+  // teclado: ← → entre pantallas (si no estás escribiendo ni hay un detalle abierto)
+  document.addEventListener('keydown', e => {
+    if ($('dialog[open]') || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.target.closest('input,textarea,select,summary,[contenteditable]')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(Math.min(cur + 1, pages.length - 1)); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(Math.max(cur - 1, 0)); }
+  });
+
+  // táctil: deslizar de lado a lado
+  let tx = 0, ty = 0, tt = 0;
+  $('#main').addEventListener('touchstart', e => { const t = e.changedTouches[0]; tx = t.clientX; ty = t.clientY; tt = Date.now(); }, { passive: true });
+  $('#main').addEventListener('touchend', e => {
+    if ($('dialog[open]') || e.target.closest('input,textarea,select,.faq__list')) return;
+    const t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6 && Date.now() - tt < 700) go(dx < 0 ? Math.min(cur + 1, pages.length - 1) : Math.max(cur - 1, 0));
+  }, { passive: true });
+
+  addEventListener('hashchange', () => { const i = pageFromHash(location.hash); if (i >= 0) go(i); });
+  addEventListener('resize', () => moveInd($('a.is-active', pill), true));
+  document.fonts.ready.then(() => moveInd($('a.is-active', pill), true));
+
+  // arranque directo en la pantalla del enlace (sin animación)
+  const start = pageFromHash(location.hash);
+  if (start > 0) {
+    pages[0].classList.remove('is-active'); pages[0].inert = true; pages[0].setAttribute('aria-hidden', 'true');
+    pages[start].classList.add('is-active'); pages[start].inert = false; pages[start].removeAttribute('aria-hidden');
+    cur = start;
+  }
+  setNav(cur, true);
+
+  /* ── Detalle de proyecto (diálogos) ── */
+  $$('[data-open]').forEach(el => el.addEventListener('click', e => {
+    const d = document.getElementById(el.dataset.open);
+    if (!d || !d.showModal) return;
+    e.preventDefault();
+    d.showModal();
+  }));
+  $$('dialog.case').forEach(d => {
+    d.addEventListener('click', e => { if (e.target === d) d.close(); });          // clic en el fondo
+    $('[data-close]', d).addEventListener('click', () => d.close());
+  });
+
+  /* ── Plantilla de restaurante: tema claro / oscuro ── */
+  const stageRest = $('#stage-rest');
+  $$('.modes button').forEach(b => b.addEventListener('click', () => {
+    const dark = b.dataset.mode === 'dark';
+    stageRest.classList.toggle('is-dark', dark);
+    $$('.modes button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    ['#rest-d', '#rest-m'].forEach(id => { const im = $(id); im.src = dark ? im.dataset.dark : im.dataset.light; });
+  }));
+
+  /* ── Inicio: la palabra cambia de negocio y las capturas la siguen ── */
+  const SECTORES = [
+    { s: 'panaderia',   cap: 'Casa Migas · panadería de barrio',                              open: 'case-casa-migas',  href: '#proyectos' },
+    { s: 'tatuaje',     cap: 'Mala Tinta · estudio de tatuajes',                              open: 'case-mala-tinta',  href: '#proyectos' },
+    { s: 'peluqueria',  cap: 'Plantilla de salón · peluquería y estética',                    open: 'case-salon',       href: '#proyectos' },
+    { s: 'restaurante', cap: 'Plantilla de restaurante · bares y cafeterías',                 open: 'case-restaurante', href: '#proyectos' },
+    { s: 'marca',       cap: 'Si trabajas por tu cuenta, tu web es tu carta de presentación', open: '',                 href: '#servicios' }
+  ];
+  const swap = $('#swap'), words = $$('.swap__w', swap), cards = $$('.deck__card');
+  const cap = $('#swap-cap'), capText = $('#swap-cap-text');
+  let cw = 0, held = false;
+
+  const fit = () => { swap.style.width = words[cw].getBoundingClientRect().width + 'px'; };
+  function show(i) {
+    const prev = cw;
+    cw = i;
+    words.forEach((w, k) => {
+      w.classList.toggle('is-on', k === i);
+      w.classList.toggle('is-out', k === prev && k !== i);
+      if (k !== prev && k !== i) w.classList.remove('is-out');
+    });
+    cards.forEach(c => c.classList.toggle('is-active', c.dataset.s === SECTORES[i].s));
+    fit();
+    capText.style.opacity = 0;
+    setTimeout(() => {
+      capText.textContent = SECTORES[i].cap;
+      cap.href = SECTORES[i].href;
+      if (SECTORES[i].open) cap.dataset.open = SECTORES[i].open; else delete cap.dataset.open;
+      capText.style.opacity = 1;
+    }, 160);
+  }
+  fit();
+  show(0);
+  document.fonts.ready.then(fit);
+  document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', fit);
+  addEventListener('resize', fit);
+  cards.forEach(c => {
+    const idx = SECTORES.findIndex(x => x.s === c.dataset.s);
+    c.addEventListener('mouseenter', () => { held = true; show(idx); });
+    c.addEventListener('focus', () => { held = true; show(idx); });
+    c.addEventListener('mouseleave', () => { held = false; });
+    c.addEventListener('blur', () => { held = false; });
+  });
+  if (!reduce) setInterval(() => {
+    if (!held && !document.hidden && cur === 0 && !busy && !$('dialog[open]')) show((cw + 1) % SECTORES.length);
+  }, 3200);
+
+  /* ── Contacto directo (solo lo que hayas rellenado arriba) ── */
+  const direct = $('#direct');
+  const mk = (txt, href, solid) => {
+    const a = document.createElement('a');
+    a.className = 'btn ' + (solid ? 'btn--solid' : 'btn--ghost');
+    a.href = href; a.textContent = txt;
+    if (href.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; }
+    direct.appendChild(a);
+  };
+  if (CONTACTO.whatsapp) mk('WhatsApp', 'https://wa.me/' + CONTACTO.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent('Hola Carlos, tengo un negocio y me gustaría hablar de una web.'), true);
+  if (CONTACTO.telefono) mk('Llamar', 'tel:+34' + CONTACTO.telefono.replace(/\D/g, '').replace(/^34(?=\d{9}$)/, ''), false);
+  if (CONTACTO.email) mk('Email', 'mailto:' + CONTACTO.email, false);
+  if (CONTACTO.instagram) mk('Instagram', 'https://instagram.com/' + CONTACTO.instagram.replace(/^@/, ''), false);
+
+  /* ── Formulario (Netlify Forms) ── */
+  const form = $('#form'), msg = $('#form-msg'), send = $('#send');
+  const say = (txt, ok) => {
+    msg.textContent = txt; msg.hidden = false;
+    msg.className = 'form__msg ' + (ok ? 'form__msg--ok' : 'form__msg--err');
+  };
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    send.disabled = true;
+    const nombre = form.nombre.value.trim().split(' ')[0];
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      say(`¡Recibido, ${nombre}! Te respondo en 48 horas.`, true);
+    } catch (_) {
+      // solo se ofrecen "otros medios" si de verdad hay alguno puesto arriba
+      const otros = CONTACTO.email ? ` o escríbeme a ${CONTACTO.email}`
+                  : (CONTACTO.whatsapp || CONTACTO.telefono || CONTACTO.instagram) ? ' o usa los botones de arriba' : '';
+      say(`No he podido enviar el mensaje. Prueba de nuevo en un rato${otros}.`, false);
+    } finally {
+      send.disabled = false;
+    }
+    msg.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+  });
+})();
+</script>
+</body>
+</html>
