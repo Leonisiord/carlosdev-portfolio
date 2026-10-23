@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="carlosdev">
 <meta property="og:url" content="https://carlosdev-web.netlify.app/">
 <meta property="og:title" content="carlosdev — Webs para negocios pequeños y freelancers en Gran Canaria">
-<meta property="og:description" content="Una web que se parezca a tu negocio. Cuatro proyectos: un estudio de tatuajes, una panadería, un salón y un restaurante.">
+<meta property="og:description" content="Una web que se parezca a tu negocio. Cinco proyectos: una tienda online real, un estudio de tatuajes, una panadería, un salón y un restaurante.">
 <meta property="og:image" content="https://carlosdev-web.netlify.app/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -228,6 +228,7 @@ html.warping .stage{pointer-events:none}
 .stagebox--tatuaje{--stage:radial-gradient(120% 100% at 20% 0%,#7D0B14 0%,#1A0C0E 62%)}
 .stagebox--panaderia{--stage:linear-gradient(135deg,#FFEFD9 0%,#FAD3D8 100%)}
 .stagebox--salon{--stage:radial-gradient(110% 100% at 80% 0%,#3a2f1d 0%,#0a0a0a 60%)}
+.stagebox--tienda{--stage:radial-gradient(110% 100% at 85% 0%,#ff1a0d 0%,#3a0d06 45%,#0b0807 75%)}
 .stagebox--restaurante{--stage:#E4DCC8}
 .stagebox--restaurante.is-dark{--stage:#17140F}
 .browser{border-radius:12px;overflow:hidden;background:#15171c;box-shadow:0 22px 50px -20px rgba(0,0,0,.6)}
@@ -260,6 +261,11 @@ html.warping .stage{pointer-events:none}
 .badge{display:inline-block;padding:.28rem .7rem;border-radius:999px;font:600 .72rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .badge--demo{background:var(--accent);color:var(--accent-ink)}
 .badge--tpl{border:1.5px solid var(--ink)}
+.badge--real{background:#1f8a4c;color:#fff}
+.tile--wide .stagebox{min-height:clamp(260px,40vh,400px)}
+.tile--wide .browser{max-width:min(640px,68%)}
+.tile--wide .phone{width:22%;max-width:170px}
+@media (max-width:700px){.tile--wide .browser{max-width:none}.tile--wide .phone{width:40%}}
 .note{margin:.9rem .4rem 0;color:var(--muted);font-size:.95rem}
 
 /* ───────── Detalle de proyecto (diálogo) ───────── */
@@ -508,7 +514,7 @@ html.warping .stage{pointer-events:none}
           </div>
         </div>
 
-        <div class="card fact s3"><b>4 webs</b><span>Dos a medida y dos plantillas</span></div>
+        <div class="card fact s3"><b>5 webs</b><span>Una tienda real, dos a medida y dos plantillas</span></div>
         <div class="card fact s3"><b>Diseño propio</b><span>Cada negocio, su estilo</span></div>
         <div class="card fact s3"><b>Móvil primero</b><span>Se ven bien en el teléfono</span></div>
         <div class="card fact s3"><b>Contacto directo</b><span>WhatsApp, llamada o formulario</span></div>
@@ -525,6 +531,14 @@ html.warping .stage{pointer-events:none}
       </div>
 
       <div class="bento">
+        <button class="card tile tile--wide s12" type="button" data-open="case-toque-picante" aria-label="Ver el proyecto Toque Picante, tienda online de un cliente real">
+          <div class="stagebox stagebox--tienda">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/tienda.webp" width="1200" height="675" alt=""></div>
+            <div class="phone"><img src="img/tienda-movil.webp" width="360" height="670" alt=""></div>
+          </div>
+          <div class="tile__foot"><div><h3>Toque Picante</h3><p>Tienda online de chiles y aceites de Gran Canaria · cliente real, en marcha</p></div><span class="chip">Ver detalle <span aria-hidden="true">+</span></span></div>
+        </button>
+
         <button class="card tile s3" type="button" data-open="case-mala-tinta" aria-label="Ver el proyecto Mala Tinta, estudio de tatuajes">
           <div class="stagebox stagebox--tatuaje">
             <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/tatuajes.webp" width="1200" height="675" alt=""></div>
@@ -557,7 +571,7 @@ html.warping .stage{pointer-events:none}
           <div class="tile__foot"><div><h3>Restaurante</h3><p>Bares y cafeterías · plantilla</p></div><span class="chip">Ver detalle <span aria-hidden="true">+</span></span></div>
         </button>
       </div>
-      <p class="note">Dos demos completas, hechas desde cero, y dos plantillas listas para rellenar. Los datos que ves son inventados; el diseño, no.</p>
+      <p class="note">Una tienda real ya vendiendo, dos demos completas hechas desde cero y dos plantillas listas para rellenar. En las demos los datos son inventados; el diseño, no.</p>
     </div>
   </section>
 
@@ -714,7 +728,7 @@ html.warping .stage{pointer-events:none}
             </details>
             <details>
               <summary>¿Se verá bien en el móvil?</summary>
-              <p>Es lo primero que diseño y lo último que reviso. Las cuatro webs están pensadas para verse bien desde el teléfono; puedes comprobarlo abriéndolas.</p>
+              <p>Es lo primero que diseño y lo último que reviso. Todas las webs están pensadas para verse bien desde el teléfono; puedes comprobarlo abriéndolas.</p>
             </details>
           </div>
         </div>
@@ -771,6 +785,36 @@ html.warping .stage{pointer-events:none}
 </main>
 
 <!-- ═════ DETALLE DE CADA PROYECTO ═════ -->
+<dialog class="case" id="case-toque-picante" aria-labelledby="ct-toque-picante">
+  <button class="case__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+  <div class="case__inner">
+    <div class="case__media">
+      <div class="stagebox stagebox--tienda">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>toquepicante.es</span></div><img src="img/tienda.webp" width="1200" height="675" alt="Web de Toque Picante: barra roja, titular «Picante de verdad» y el logo con chiles"></div>
+        <div class="phone"><img src="img/tienda-movil.webp" width="360" height="670" alt="La tienda de Toque Picante en el móvil"></div>
+      </div>
+    </div>
+    <div class="case__body">
+      <p class="project__tags"><span class="badge badge--real">Cliente real</span><span class="mono">Tienda online</span></p>
+      <h3 id="ct-toque-picante">Toque Picante</h3>
+      <p class="project__lede">Un productor de Arucas que cultiva sus propios chiles y los convierte en aceites, molidos y sales. Necesitaba vender online sin pagar comisiones a nadie: tienda propia, pago por Bizum y un panel para gestionarla él solo.</p>
+      <ul class="feat">
+        <li>Tienda con carrito y pedidos, precios calculados siempre en el servidor</li>
+        <li>Pago por Bizum con el código de pedido como concepto</li>
+        <li>Panel privado: productos, fotos, categorías y pedidos desde el móvil</li>
+        <li>Correos automáticos al cliente y al dueño en cada paso del pedido</li>
+        <li>Textos legales, seguridad revisada y alta en Google</li>
+      </ul>
+      <dl class="specs">
+        <div><dt class="mono">Para</dt><dd>Productores y pequeñas marcas que venden su propio producto</dd></div>
+        <div><dt class="mono">Técnica</dt><dd>Cloudflare Pages + Functions, base de datos D1, correos con Resend</dd></div>
+        <div><dt class="mono">Paleta</dt><dd><span class="sw" role="img" aria-label="Rojo chillón, naranja, ámbar, negro carbón y verde chile"><i style="--c:#FF1A0D" title="#FF1A0D"></i><i style="--c:#FF7A00" title="#FF7A00"></i><i style="--c:#FFB21A" title="#FFB21A"></i><i style="--c:#0B0807" title="#0B0807"></i><i style="--c:#6DBB45" title="#6DBB45"></i></span></dd></div>
+      </dl>
+      <a class="btn btn--solid" href="https://toquepicante.es" target="_blank" rel="noopener">Abrir la tienda en vivo <span class="btn__arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</dialog>
+
 <dialog class="case" id="case-mala-tinta" aria-labelledby="ct-mala-tinta">
   <button class="case__close" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
   <div class="case__inner">
